@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light">
   <div class="container-fluid">
-    <a class="navbar-brand p-0" href="{{ '/' | relative_url }}">
+    <a class="navbar-brand p-0" href="{{ '/projects/' | relative_url }}">
     {% if site.lightavatar or site.darkavatar %}
     <img src="{{ site.lightavatar | relative_url }}" alt="light avatar" width="30" class="d-inline-block align-top m-0 light-avatar">
     <img src="{{ site.darkavatar | relative_url }}" alt="dark avatar" width="30" class="d-inline-block align-top m-0 dark-avatar">
@@ -13,7 +13,7 @@
       <ul class="navbar-nav me-auto">
         {% for item in site.data.navigation %}
           <li class="nav-item">
-            <a href="{{ item.link | relative_url }}" {% if page.url == item.link %} class="nav-link active" {% else %} class="nav-link" {% endif %}>{{ item.name }}</a>
+            <a href="{{ item.link | relative_url }}" {% if page.url == item.link %} class="nav-link active" {% else %} class="nav-link" {% endif %} target="_blank" rel="noopener noreferrer">{{ item.name }}</a>
           </li>
         {% endfor %}
       </ul>
