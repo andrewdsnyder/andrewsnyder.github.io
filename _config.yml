@@ -43,7 +43,7 @@ footer-links:
   email: andrew3snyder@gmail.com
   facebook:
   github: andrewdsnyder
-  linkedin: andrew.d.snyder
+  linkedin: andrew-d-snyder
 
 plugins:
   - jekyll-seo-tag
