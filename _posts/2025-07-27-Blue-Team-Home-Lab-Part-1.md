@@ -11,7 +11,7 @@ Previously, I have been doing one-offs of a single LAN with a couple VMs to get 
 <br>
 ## Topology (v1)
 
-![topologyv1]({{site.baseurl}}/assets/images/Blue-Team-Home-Lab-Part-1/topologyv1.png)
+![topologyv1]({{site.baseurl}}/assets/images/Blue-Team-Home-Lab-Part-1/Topologyv1.png)
 <br>
 <br>
 ## VMware Network Setup
@@ -25,7 +25,7 @@ Some of these can be ignored for now. The focus at the moment is vmnet2 and vmne
 <br>
 ## Setting up pfSense Firewall
 
-To start: I downloaded the netgate installer for pfSense from [pfsense.org/download](https://www.pfsense.org/download/)
+To start: I downloaded the netgate installer for pfSense from [pfsense.org/download](https://www.pfsense.org/download/){:target="_blank"}
 
 Next, in VMware hit create VM and select the netgate-installer-amd64.iso.<br>
 VM name: pfSense<br>
@@ -39,7 +39,7 @@ This is a good preliminary setup and we can add more later as we go along. I am 
 <br>
 ## Kali Linux VM Setup in VLAN1
 
-I downloaded the Pre-built Vmware VM from [kali.org](https://www.kali.org/get-kali/#kali-virtual-machines)<br>
+I downloaded the Pre-built Vmware VM from [kali.org](https://www.kali.org/get-kali/#kali-virtual-machines){:target="_blank"}<br>
 VM name: kali linux<br>
 Allocation:  80 GB disk space, 4 processors, and 3GB of RAM<br>
 Once installed, go to settings and select Network Adapter. I believe this defaults to NAT but I changed this to custom vmnet2 and this will be the only network adapter on this machine.  Open Firefox and go to 10.10.1.254 to get to the pfSense GUI default login is admin/pfsense. Here we will change the name of OPT1 to VLAN10 under Interfaces, and make sure both LAN and VLAN10 interfaces are enabled and the IPs are correct in the “static IPv4 Configuration section:
@@ -63,7 +63,7 @@ I will be adding more VLANs later on in this homelab build, but for now VLAN1 an
 <br>
 ## Wazuh install on VLAN1
 
-I installed Ubuntu Server 24.04.2 from here: [ubuntu.com/download/server](https://ubuntu.com/download/server)
+I installed Ubuntu Server 24.04.2 from here: [ubuntu.com/download/server](https://ubuntu.com/download/server){:target="_blank"}
 
 I allocated 60GB of disk space, 4 processors, and 8 GB of RAM for this VM for now.
 
@@ -71,11 +71,18 @@ I wont be going through setting up Ubuntu or Windows servers for the most part b
 
 Once the VM is setup I will right click it in VMware > Settings and change the network adapter configuration to vmnet2.  
 
-I followed the steps here to install Wazuh: [documentation.wazuh.com](https://documentation.wazuh.com/current/quickstart.html) and once installation is complete the console will provide admin credentials.
+I followed the steps here to install Wazuh: [documentation.wazuh.com](https://documentation.wazuh.com/current/quickstart.html){:target="_blank"}<br>
+`curl -sO https://packages.wazuh.com/4.12/wazuh-install.sh && sudo bash ./wazuh-install.sh -a` <br>
+once installation is complete the console will provide admin credentials. <br>
+`INFO: --- Summary ---
+INFO: You can access the web interface https://<WAZUH_DASHBOARD_IP_ADDRESS>
+    User: admin
+    Password: <ADMIN_PASSWORD>
+INFO: Installation finished.`
 
 On the Kali machine in Firefox, the Wazuh dashboard can be accessed from the new Ubuntu VM address: 10.10.1.51 and login with the creds that were just provided in console.
 
-Note: this is elementary but I’ll just throw it in anyways: If at any point I was wondering if the IP was correctly configured I did a ip a or ip -c addr show and to check connection between machines I pinged them.
+Note: this is elementary but I’ll just throw it in anyways: If at any point I was wondering if the IP was correctly configured I did a `ip a` or `ip -c addr show` and to check connection between machines I pinged them.
 
 <br>
 <br>
