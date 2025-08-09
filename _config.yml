@@ -27,7 +27,7 @@ url: "https://andrewsnyder.github.io/portfolio/"
 # (http://yourusername.github.io/repository-name)
 # and NOT your User repository (http://yourusername.github.io)
 # then add in the baseurl here, like this: "/repository-name"
-baseurl: ""
+baseurl: "https://andrewsnyder.github.io/portfolio/projects"
 
 
 # URL to a site-wide logo (e.g., /assets/your-company-logo.png)
